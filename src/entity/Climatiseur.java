@@ -5,15 +5,25 @@ public class Climatiseur {
 
     public enum Type { HM, SR, FD, KX }
 
-    private int id;
     private String nom;
     private Famille famille;
     private Type type;
 
-    public Climatiseur(int id, String nom, Famille famille, Type type) {
-        this.id = id;
+    public Climatiseur(String nom, Famille famille, Type type) {
         this.nom = nom;
         this.famille = famille;
         this.type = type;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Famille getFamille() {
+        return famille;
+    }
+
+    public Type getType() {
+        return type;
     }
 }

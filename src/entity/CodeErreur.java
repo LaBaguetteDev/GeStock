@@ -2,12 +2,18 @@ package entity;
 
 public class CodeErreur {
     private String code;
-    private int id;
     private String texteAffiche;
 
-    public CodeErreur(String code, int id, String texteAffiche) {
+    public CodeErreur(String code, String texteAffiche) {
         this.code = code;
-        this.id = id;
         this.texteAffiche = texteAffiche;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getTexteAffiche() {
+        return texteAffiche;
     }
 }

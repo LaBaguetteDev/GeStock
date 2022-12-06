@@ -11,18 +11,19 @@ public class MainView {
     public MainView() {
         searchFormView = new SearchForm();
         searchResultView = new SearchResult();
-        showPieceListView = new ShowPieceList();
+        showPieceListView = new ShowPieceList(this);
         showMenu();
-
     }
 
-    private void showMenu() {
+    public void showMenu() {
         System.out.println("Bienvenue sur GeStock");
         System.out.println("---------------------");
         System.out.println("1. Gérer le stock");
         System.out.println("2. Effectuer une recherche");
         System.out.println("3. Afficher statistiques du stock");
         System.out.println("4. Gérer sauvegardes du stock");
+
+        menuResult();
     }
 
     private void menuResult() {

@@ -14,7 +14,6 @@ public class Piece {
     private int stockMinimal;
 
     private Etagere etagere;
-
     private List<Climatiseur> climatiseurs = new ArrayList<>();
     private List<Entree> datesEntree = new ArrayList<>();
     private List<Sortie> datesSorties = new ArrayList<>();
@@ -38,5 +37,57 @@ public class Piece {
         this.datesEntree = datesEntree;
         this.datesSorties = datesSorties;
         this.codesErreurs = codesErreurs;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getIdSubstitut() {
+        return idSubstitut;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public double getPrixBrut() {
+        return prixBrut;
+    }
+
+    public double getPrixNet() {
+        return prixNet;
+    }
+
+    public double getPrixTotal() {
+        return prixTotal;
+    }
+
+    public int getStockActuel() {
+        return stockActuel;
+    }
+
+    public int getStockMinimal() {
+        return stockMinimal;
+    }
+
+    public Etagere getEtagere() {
+        return etagere;
+    }
+
+    public List<Climatiseur> getClimatiseurs() {
+        return climatiseurs;
+    }
+
+    public List<Entree> getDatesEntree() {
+        return datesEntree;
+    }
+
+    public List<Sortie> getDatesSorties() {
+        return datesSorties;
+    }
+
+    public List<CodeErreur> getCodesErreurs() {
+        return codesErreurs;
     }
 }

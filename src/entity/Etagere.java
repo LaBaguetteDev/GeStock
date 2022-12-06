@@ -8,4 +8,12 @@ public class Etagere {
         this.boite = boite;
         this.etagere = etagere;
     }
+
+    public String getBoite() {
+        return boite;
+    }
+
+    public String getEtagere() {
+        return etagere;
+    }
 }

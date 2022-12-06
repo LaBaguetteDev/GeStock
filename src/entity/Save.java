@@ -13,4 +13,8 @@ public class Save {
         this.lienFichier = lienFichier;
         this.savedStock = savedStock;
     }
+
+    public Stock getSavedStock() {
+        return savedStock;
+    }
 }
