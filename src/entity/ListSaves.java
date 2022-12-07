@@ -12,8 +12,21 @@ public class ListSaves {
         initSave();
     }
 
+    public List<Save> getSaveList() {
+        return saveList;
+    }
+
     public Stock getLastSave() {
         return saveList.get(saveList.size()-1).getSavedStock();
+    }
+
+    public Stock getSave(String choice) {
+        return saveList.get(Integer.parseInt(choice)).getSavedStock();
+    }
+
+    public void addSave(Stock st) {
+        Save s = new Save(LocalDateTime.now(), "jsp", st);
+        saveList.add(s);
     }
 
     private void initSave() {

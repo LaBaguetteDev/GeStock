@@ -12,9 +12,9 @@ public class ShowPieceList {
 
     MainView mainView;
     CtrlStock pieceCtrl;
-    public ShowPieceList(MainView mainView) {
+    public ShowPieceList(MainView mainView, CtrlStock ctrlStock) {
         this.mainView = mainView;
-        this.pieceCtrl = new CtrlStock();
+        this.pieceCtrl = ctrlStock;
     }
 
     public void displayStock() {
@@ -25,46 +25,50 @@ public class ShowPieceList {
                 "Etag", "Bte", "TYPE", "Stk", "Min", "Entree", "Sortie", "PARTS NAME", "PB-MHI", "SUBSTITUT", "NET-MHI", "TOT-MHI");
         for (Piece p : pieceCtrl.afficherPieces()) {
 
-            if(p.getDatesEntree().size() == 0 && p.getDatesSorties().size() == 0) {
-                System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
-                        p.getEtagere().getEtagere(),
-                        p.getEtagere().getBoite(),
-                        p.getId(),
-                        p.getStockActuel(), p.getStockMinimal(),
-                        "",
-                        "",
-                        p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
-            } else if(p.getDatesSorties().size() == 0) {
-                System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
-                        p.getEtagere().getEtagere(),
-                        p.getEtagere().getBoite(),
-                        p.getId(),
-                        p.getStockActuel(), p.getStockMinimal(),
-                        sdf.format(p.getDatesEntree().get(p.getDatesEntree().size()-1).getDate()),
-                        "",
-                        p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
-            } else if (p.getDatesEntree().size() == 0) {
-                System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
-                        p.getEtagere().getEtagere(),
-                        p.getEtagere().getBoite(),
-                        p.getId(),
-                        p.getStockActuel(), p.getStockMinimal(),
-                        "",
-                        sdf.format(p.getDatesSorties().get(p.getDatesSorties().size()-1).getDate()),
-                        p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
-            } else {
-                System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
-                        p.getEtagere().getEtagere(),
-                        p.getEtagere().getBoite(),
-                        p.getId(),
-                        p.getStockActuel(), p.getStockMinimal(),
-                        sdf.format(p.getDatesEntree().get(p.getDatesEntree().size()-1).getDate()),
-                        sdf.format(p.getDatesSorties().get(p.getDatesSorties().size()-1).getDate()),
-                        p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
-            }
+            displayPieces(sdf, p);
         }
 
         displayMenu();
+    }
+
+    static void displayPieces(SimpleDateFormat sdf, Piece p) {
+        if(p.getDatesEntree().size() == 0 && p.getDatesSorties().size() == 0) {
+            System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
+                    p.getEtagere().getEtagere(),
+                    p.getEtagere().getBoite(),
+                    p.getId(),
+                    p.getStockActuel(), p.getStockMinimal(),
+                    "",
+                    "",
+                    p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
+        } else if(p.getDatesSorties().size() == 0) {
+            System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
+                    p.getEtagere().getEtagere(),
+                    p.getEtagere().getBoite(),
+                    p.getId(),
+                    p.getStockActuel(), p.getStockMinimal(),
+                    sdf.format(p.getDatesEntree().get(p.getDatesEntree().size()-1).getDate()),
+                    "",
+                    p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
+        } else if (p.getDatesEntree().size() == 0) {
+            System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
+                    p.getEtagere().getEtagere(),
+                    p.getEtagere().getBoite(),
+                    p.getId(),
+                    p.getStockActuel(), p.getStockMinimal(),
+                    "",
+                    sdf.format(p.getDatesSorties().get(p.getDatesSorties().size()-1).getDate()),
+                    p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
+        } else {
+            System.out.printf("|%-5s|%-5s|%-20s|%-3s|%-3s|%-10s|%-10s|%-25s|%-7s|%-20s|%-7.2f|%-7.2f\n",
+                    p.getEtagere().getEtagere(),
+                    p.getEtagere().getBoite(),
+                    p.getId(),
+                    p.getStockActuel(), p.getStockMinimal(),
+                    sdf.format(p.getDatesEntree().get(p.getDatesEntree().size()-1).getDate()),
+                    sdf.format(p.getDatesSorties().get(p.getDatesSorties().size()-1).getDate()),
+                    p.getNom(), p.getPrixBrut(), p.getIdSubstitut(), p.getPrixNet(), p.getPrixTotal());
+        }
     }
 
     private void displayMenu() {
@@ -73,8 +77,10 @@ public class ShowPieceList {
         System.out.println("2. Ajouter piece");
         System.out.println("3. Supprimer piece");
         System.out.println("4. Editer piece");
-        System.out.println("5. Trier pieces");
-        System.out.println("6. Retour au menu principal");
+        System.out.println("5. Ajouter entrée");
+        System.out.println("6. Ajouter sortie");
+        System.out.println("7. Trier pieces");
+        System.out.println("8. Retour au menu principal");
 
 
         Scanner scanner = new Scanner(System.in);
@@ -82,7 +88,7 @@ public class ShowPieceList {
 
         String choice = scanner.nextLine();
         String id; String idSubstitut; String nom;
-        Double prixBrut; int stockActuel; int stockMinimal;
+        double prixBrut; int stockActuel; int stockMinimal;
         String etag; String bte; String[] clims; String[] fam; String[] typ;
         String[] entrees; String[] qteEntrees;
         String[] sorties; String[] qteSorties;
@@ -280,7 +286,46 @@ public class ShowPieceList {
                 displayStock();
 
                 break;
+
             case "5":
+                System.out.println("TYPE a editer : ");
+                idedit = scanner.nextLine();
+
+                System.out.println("Entree : ");
+                String entree = scanner.nextLine();
+
+                System.out.println("qte Entree : ");
+                int qteEntree = Integer.parseInt(scanner.nextLine());
+
+                pieceCtrl.ajouterEntree(idedit, entree, qteEntree);
+
+                displayStock();
+                break;
+            case "6":
+                System.out.println("TYPE a editer : ");
+                idedit = scanner.nextLine();
+
+                System.out.println("Sortie : ");
+                String sortie = scanner.nextLine();
+
+                System.out.println("qte Sortie : ");
+                int qteSortie = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Prenom installateurs : ");
+                String pInstallateur = scanner.nextLine();
+
+                System.out.println("Nom installateurs : ");
+                String nInstallateur = scanner.nextLine();
+
+                System.out.println("Orga installateurs : ");
+                String oInstallateur = scanner.nextLine();
+
+                pieceCtrl.ajouterSortie(idedit, sortie, qteSortie, nInstallateur, pInstallateur, oInstallateur);
+
+                displayStock();
+
+                break;
+            case "7":
                 System.out.println("Trier en fonction de :");
                 System.out.println("1. Etag");
                 System.out.println("2. TYPE");
@@ -293,7 +338,7 @@ public class ShowPieceList {
                 displayStock();
 
                 break;
-            case "6":
+            case "8":
                 mainView.showMenu();
                 break;
         }

@@ -90,4 +90,14 @@ public class Piece {
     public List<CodeErreur> getCodesErreurs() {
         return codesErreurs;
     }
+
+    public void addEntree(Entree e) {
+        datesEntree.add(e);
+        stockActuel += e.getQuantite();
+    }
+
+    public void addSortie(Sortie s) {
+        datesSorties.add(s);
+        stockActuel -= s.getQuantite();
+    }
 }

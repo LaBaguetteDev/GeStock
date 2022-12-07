@@ -4,10 +4,8 @@ import java.util.List;
 
 public class Stock {
     List<Piece> pieces;
-    ListSaves listSaves;
 
-    public Stock() {
-        listSaves = new ListSaves();
+    public Stock(ListSaves listSaves) {
         pieces = listSaves.getLastSave().getPieces();
     }
 

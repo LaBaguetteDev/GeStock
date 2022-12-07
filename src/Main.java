@@ -1,3 +1,4 @@
+import controller.CtrlStock;
 import view.MainView;
 
 public class Main {

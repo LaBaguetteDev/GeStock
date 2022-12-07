@@ -17,4 +17,12 @@ public class Save {
     public Stock getSavedStock() {
         return savedStock;
     }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public String getLienFichier() {
+        return lienFichier;
+    }
 }
