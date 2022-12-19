@@ -19,7 +19,7 @@ public class ListSaves {
         return saveList.get(saveList.size()-1).getSavedStock();
     }
 
-    public Stock loadSave(int index) {
+    public Stock loadSavedStock(int index) {
         return saveList.get(index).getSavedStock();
     }
 

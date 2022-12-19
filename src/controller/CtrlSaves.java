@@ -19,7 +19,7 @@ public class CtrlSaves {
     }
 
     public void loadSave(int index) {
-        ctrlStock.setStock(listSaves.loadSave(index));
+        ctrlStock.setStock(listSaves.loadSavedStock(index));
     }
 
     public void save() {
