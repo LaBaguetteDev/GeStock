@@ -2,18 +2,18 @@ package entity;
 
 public class Etagere {
     private String boite;
-    private String etagere;
+    private String idEtagere;
 
     public Etagere(String boite, String etagere) {
         this.boite = boite;
-        this.etagere = etagere;
+        this.idEtagere = etagere;
     }
 
     public String getBoite() {
         return boite;
     }
 
-    public String getEtagere() {
-        return etagere;
+    public String getIdEtagere() {
+        return idEtagere;
     }
 }

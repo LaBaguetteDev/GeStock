@@ -52,7 +52,7 @@ public class MainView {
                 showPieceListView.displayStock();
                 break;
             case "2":
-                searchFormView.showForm();
+                searchFormView.search();
                 break;
             case "3":
                 statsView.displayStats();

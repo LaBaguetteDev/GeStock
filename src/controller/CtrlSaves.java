@@ -18,8 +18,8 @@ public class CtrlSaves {
         return listSaves;
     }
 
-    public void loadSave(String choice) {
-        ctrlStock.setStock(listSaves.getSave(choice));
+    public void loadSave(int index) {
+        ctrlStock.setStock(listSaves.loadSave(index));
     }
 
     public void save() {

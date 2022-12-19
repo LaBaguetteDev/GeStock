@@ -17,7 +17,7 @@ public class SearchView {
         this.ctrlStock = ctrlStock;
     }
 
-    public void showForm() {
+    public void search() {
 
         Scanner scanner = new Scanner(System.in);
 

@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 
 public class Save {
 
-    private LocalDateTime dateTime;
+    private LocalDateTime dateSauvegarde;
     private String lienFichier;
     private Stock savedStock;
 
     public Save(LocalDateTime dateTime, String lienFichier, Stock savedStock) {
-        this.dateTime = dateTime;
+        this.dateSauvegarde = dateTime;
         this.lienFichier = lienFichier;
         this.savedStock = savedStock;
     }
@@ -18,8 +18,8 @@ public class Save {
         return savedStock;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getDateSauvegarde() {
+        return dateSauvegarde;
     }
 
     public String getLienFichier() {

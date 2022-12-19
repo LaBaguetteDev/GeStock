@@ -1,6 +1,5 @@
 package entity;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -16,12 +15,12 @@ public class ListSaves {
         return saveList;
     }
 
-    public Stock getLastSave() {
+    public Stock getLastSavedStock() {
         return saveList.get(saveList.size()-1).getSavedStock();
     }
 
-    public Stock getSave(String choice) {
-        return saveList.get(Integer.parseInt(choice)).getSavedStock();
+    public Stock loadSave(int index) {
+        return saveList.get(index).getSavedStock();
     }
 
     public void addSave(Stock st) {
@@ -217,63 +216,63 @@ public class ListSaves {
         Etagere e10 = new Etagere("B02", "F06");
 
         // Initialisation des pieces
-        Piece p1 = new Piece("AGR201A011CA", "AGR201A011C", "COMPRESSOR",
+        Piece p1 = new Piece("AGR201A011CA", null, "COMPRESSOR",
                 410.00, 1, 0,
                 e1, cl0, enl0, sol0, cel0);
 
-        Piece p2 = new Piece("FD-PAC", "", "COOLMARK",
+        Piece p2 = new Piece("FD-PAC", null, "COOLMARK",
                 475.00, 3, 1,
                 e2, cl0, enl1, sol1, cel0);
 
-        Piece p3 = new Piece("INTESIS ACX-WIFI", "", "INTESIS-HOME",
+        Piece p3 = new Piece("INTESIS ACX-WIFI", null, "INTESIS-HOME",
                 137.54, 40, 2,
                 e3, cl21, enl0, sol2, cel0);
 
-        Piece p4 = new Piece("MCD291A002", "Partnr. 067068 - HMA100", "VCC22 - Cooling",
+        Piece p4 = new Piece("MCD291A002", null, "VCC22 - Cooling",
                 180.00, 2, 1,
                 e2, cl10, enl0, sol0, cel1);
 
-        Piece p5 = new Piece("MCD291A207", "", "CIRCULATIONS PUMP",
+        Piece p5 = new Piece("MCD291A207", null, "CIRCULATIONS PUMP",
                 87.40, 0, 1,
                 e10, cl17, enl0, sol0, cel5);
 
-        Piece p6 = new Piece("MCD291A194", "MCD291A131", "RELAY CARD",
+        Piece p6 = new Piece("MCD291A194", p4, "RELAY CARD",
                 104.00, 6, 1,
                 e4, cl15, enl2, sol3, cel17);
 
-        Piece p7 = new Piece("MCD291A131", "", "CIRCUIT BOARD HMS140V",
+        Piece p7 = new Piece("MCD291A131", null, "CIRCUIT BOARD HMS140V",
                 137.54, 3, 1,
                 e3, cl7, enl3, sol5, cel6);
 
-        Piece p8 = new Piece("MCD291A334", "", "CPU MODUL (AA21)",
+        Piece p8 = new Piece("MCD291A334", null, "CPU MODUL (AA21)",
                 137.54, 2, 1,
                 e4,cl6, enl2, sol6, cel16);
 
-        Piece p9 = new Piece("PCA505A127H", "PCA505A127B", "PWB ASSY",
+        Piece p9 = new Piece("PCA505A127H", p8, "PWB ASSY",
                 179.00, 2, 1,
                 e6,cl11, enl4, sol1, cel15);
 
-        Piece p10 = new Piece("AGR201A011C", "", "CPU MODUL (AA21)",
+        Piece p10 = new Piece("AGR201A011C", null, "CPU MODUL (AA21)",
                 137.54, 1, 0,
                 e1, cl5, enl4, sol6, cel2);
 
-        Piece p11 = new Piece("PCA505A127B", "", "PWB ASSY",
+        Piece p11 = new Piece("PCA505A127B", null, "PWB ASSY",
                 158.00, 0, 1,
                 e9, cl9, enl2, sol10, cel3);
 
-        Piece p12 = new Piece("RKT437A801B", "", "FILTER BIO",
+        Piece p12 = new Piece("RKT437A801B", null, "FILTER BIO",
                 12.00, 10, 5,
                 e5, cl10, enl4, sol9, cel5);
 
-        Piece p13 = new Piece("SSA512T094", "", "SSA512T127D",
+        Piece p13 = new Piece("SSA512T094", null, "SSA512T127D",
                 92.00, 3, 1,
                 e10,cl15, enl4, sol8, cel14);
 
-        Piece p14 = new Piece("SSA551A216L", "", "SENSOR ASSY",
+        Piece p14 = new Piece("SSA551A216L", p13, "SENSOR ASSY",
                 12.00, 4, 1,
                 e7, cl1, enl2, sol6, cel12);
 
-        Piece p15 = new Piece("W200G06", "", "WASHER",
+        Piece p15 = new Piece("W200G06", null, "WASHER",
                 5.50, 3, 1,
                 e8, cl2, enl5, sol7, cel8);
 

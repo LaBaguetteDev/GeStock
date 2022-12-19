@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Piece {
     private String id;
-    private String idSubstitut;
+    private Piece substitut;
     private String nom;
     private double prixBrut;
     private double prixNet;
@@ -19,13 +19,13 @@ public class Piece {
     private List<Sortie> datesSorties = new ArrayList<>();
     private List<CodeErreur> codesErreurs = new ArrayList<>();
 
-    public Piece(String id, String idSubstitut, String nom,
+    public Piece(String id, Piece substitut, String nom,
                  double prixBrut,
                  int stockActuel, int stockMinimal, Etagere etagere,
                  List<Climatiseur> climatiseurs, List<Entree> datesEntree,
                  List<Sortie> datesSorties, List<CodeErreur> codesErreurs) {
         this.id = id;
-        this.idSubstitut = idSubstitut;
+        this.substitut = substitut;
         this.nom = nom;
         this.prixBrut = prixBrut;
         this.prixNet = prixBrut * 0.65;
@@ -43,8 +43,8 @@ public class Piece {
         return id;
     }
 
-    public String getIdSubstitut() {
-        return idSubstitut;
+    public Piece getSubstitut() {
+        return substitut;
     }
 
     public String getNom() {

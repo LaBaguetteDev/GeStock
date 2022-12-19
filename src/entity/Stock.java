@@ -6,7 +6,7 @@ public class Stock {
     List<Piece> pieces;
 
     public Stock(ListSaves listSaves) {
-        pieces = listSaves.getLastSave().getPieces();
+        pieces = listSaves.getLastSavedStock().getPieces();
     }
 
     public Stock(List<Piece> pieces) {
@@ -26,16 +26,33 @@ public class Stock {
         return null;
     }
 
-    public void addPiece(Piece p) {
+    public boolean addPiece(Piece p) {
         pieces.add(p);
+        return true;
     }
 
-    public void deletePiece(String id) {
+    public boolean deletePiece(String id) {
         for (Piece p : pieces) {
             if(p.getId().equals(id)) {
                 pieces.remove(p);
-                break;
+                return true;
             }
         }
+        return false;
+    }
+
+    public boolean editerPiece(String idedit, Piece p) {
+        if(deletePiece(idedit)) {
+            addPiece(p);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean updateStock(Stock s) {
+        this.pieces = s.getPieces();
+        return true;
     }
 }

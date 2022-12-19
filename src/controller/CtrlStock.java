@@ -14,8 +14,9 @@ public class CtrlStock {
         stock = new Stock(listSaves);
     }
 
-    public void setStock(Stock s) {
-        this.stock = s;
+    public boolean setStock(Stock s) {
+        this.stock.updateStock(s);
+        return true;
     }
 
     public Stock getStock() {
@@ -37,6 +38,9 @@ public class CtrlStock {
                              String[] sorties, String[] qteSorties,
                              String[] pInstallateurs, String[] nInstallateur, String[] oInstallateur,
                              String[] codes, String[] textes) {
+        // Initialisation substitut
+        Piece substitut = stock.getPiece(idSubstitut);
+
         // Initialisation Etagere
         Etagere et = new Etagere(bte, etag);
 
@@ -78,7 +82,7 @@ public class CtrlStock {
         }
 
         // Initialisation piece
-        Piece p = new Piece(id, idSubstitut, nom,
+        Piece p = new Piece(id, substitut, nom,
                 prixBrut, stockActuel, stockMinimal,
                 et, climsList, entreeList, sortiesList, codesList);
 
@@ -90,16 +94,18 @@ public class CtrlStock {
         stock.deletePiece(id);
     }
 
-    public void editPiece(String idedit, String id, String idSubstitut,
-                          String nom, double prixBrut,
-                          int stockActuel, int stockMinimal, String etag, String bte,
-                          String[] clims, String[] fam, String[] typ,
-                          String[] entrees, String[] qteEntree,
-                          String[] sorties, String[] qteSorties,
-                          String[] pInstallateurs, String[] nInstallateur, String[] oInstallateur,
-                          String[] codes, String[] textes) {
+    public void editerPiece(String idedit, String id, String idSubstitut,
+                            String nom, double prixBrut,
+                            int stockActuel, int stockMinimal, String etag, String bte,
+                            String[] clims, String[] fam, String[] typ,
+                            String[] entrees, String[] qteEntree,
+                            String[] sorties, String[] qteSorties,
+                            String[] pInstallateurs, String[] nInstallateur, String[] oInstallateur,
+                            String[] codes, String[] textes) {
 
-        stock.deletePiece(idedit);
+
+        // Initialisation substitut
+        Piece substitut = stock.getPiece(idSubstitut);
 
         // Initialisation Etagere
         Etagere et = new Etagere(bte, etag);
@@ -142,14 +148,14 @@ public class CtrlStock {
         }
 
         // Initialisation piece
-        Piece p = new Piece(id, idSubstitut, nom,
+        Piece p = new Piece(id, substitut, nom,
                 prixBrut, stockActuel, stockMinimal,
                 et, climsList, entreeList, sortiesList, codesList);
 
-        stock.addPiece(p);
+        stock.editerPiece(idedit, p);
     }
 
-    public void ajouterEntree(String id, String date, int quantite) {
+    public void addEntree(String id, String date, int quantite) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 
         try {
@@ -166,7 +172,7 @@ public class CtrlStock {
         }
     }
 
-    public void ajouterSortie(String id, String date, int quantite, String nom, String prenom, String orga) {
+    public void addSortie(String id, String date, int quantite, String nom, String prenom, String orga) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 
         try {
@@ -187,7 +193,7 @@ public class CtrlStock {
     public void trierPieces(String tri) {
         switch(tri) {
             case "1":
-                Collections.sort(stock.getPieces(), Comparator.comparing(p -> p.getEtagere().getEtagere()));
+                Collections.sort(stock.getPieces(), Comparator.comparing(p -> p.getEtagere().getIdEtagere()));
                 break;
             case "2":
                 Collections.sort(stock.getPieces(), Comparator.comparing(Piece::getId));
